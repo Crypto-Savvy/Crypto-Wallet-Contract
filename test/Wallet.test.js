@@ -12,8 +12,8 @@ let wallet;
 
 beforeEach(async () => {
   accounts = await web3.eth.getAccounts();
-  wallet = await new web3.eth.Contract(JSON.parse(compiledWallet.interface))
-    .deploy({ data: compiledWallet.bytecode })
+  wallet = await new web3.eth.Contract(JSON.parse(compiledWallet))
+    .deploy({ data: compiledWallet.evm.bytecode })
     .send({ from: accounts[0], gas: "1000000" });
 });
 
